@@ -2,18 +2,22 @@ var name = prompt("Enter your name")
 var socket = io.connect("http://localhost:8000");
 var obj ={}
 
-
+var interval
 document.getElementById("button").onclick=function()
 {
     if(document.getElementById("button").innerHTML=="Start")
-    {       
-        
-           document.querySelector(".random").innerHTML="Connecting to a user...."
-           
+    {
+        document.querySelector(".random").innerHTML="Connecting to a user...."
+       
+        interval=setInterval(timer,1000)
+
+           function timer()
+           {
             socket.emit("new-user",{
                 name:name
             })
-    
+        }
+
     }
     else
     {
@@ -38,6 +42,7 @@ socket.on("message-sent",function(data){
 
 
 socket.on("user-connected",function(data){
+    clearInterval(interval)
     console.log(data)
 obj=Object.assign({},data)
    document.querySelector(".uul1").innerHTML=""

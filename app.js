@@ -28,11 +28,6 @@ io.on('connection',function(socket){
         free.push(socket.id)
         name.push(data.name)
         }
-        var count=0;
-        var interval = setInterval(searching,1000)
-        
-        function searching()
-        {
         
         if(free.length==0 || free.length==1)
         {
@@ -53,9 +48,10 @@ io.on('connection',function(socket){
             console.log("Before removing")
             console.log(free)
             console.log(name)
-            clearInterval(interval)
+           
             var index = free.indexOf(socket.id)
             var nn = name[index]   
+            var nn1 = free[index]
             free.splice(index,1)
             name.splice(index,1)
             
@@ -67,17 +63,19 @@ io.on('connection',function(socket){
             console.log("After removing")
             console.log(free)
             console.log(name)
-            io.to(first).to(socket.id).emit("user-connected",{
+            
+            io.to(first).to(nn1).emit("user-connected",{
                 first:first,
-                second:socket.id,
+                second:nn1,
                 first_name:first_name,
                 second_name:nn
-            })    
-        }
-    }
-    
+            })
+        
 
-    })
+        }
+    
+})
+
 
     socket.on("typing",function(data){
         if(socket.id==data.first)
