@@ -15,9 +15,28 @@ var server = app.listen(process.env.PORT||9000,function(){
     console.log("Listening at port 9000")
 })
 var io = socket(server)
+var free=[]
+var name=[]
+
 io.on('connection',function(socket){
-    socket.on("user",function(data){
-        console.log("User connected"+data.name)
+    socket.on("new-user",function(data){
+       
+        free.push(socket.id)
+        name.push(data.name)
+        if(free.length==0 || (free.length==1 && free[0]==socket.id))
+        {
+            free=[]
+            name=[]
+            io.to(socket.id).emit("no-user",{
+                message:"Sorry"
+            })
+        }
+        else
+        {
+            var random = Math.floor(Math.random(free.length))
+            
+        }
+
     })
 
     })
