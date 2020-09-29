@@ -19,18 +19,23 @@
         *{
             padding: 0%;
             margin: 0%;
-            overflow-x: hidden;
+           
             box-sizing: border-box;
+        }
+        body{
+            background-image: url('https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-summer-plant-flowers-and-plants-beautiful-background-pictures-image_252035.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
         }
      .start{
          background-color: black;
          height: 60px;
-         overflow-y: hidden;
+         
      }
      .hh{
          color: orange;
          overflow-y: hidden;
-         padding-top: 10px;
+         padding-top: 7px;
          text-align: center;
      }
      .container{
@@ -71,18 +76,21 @@
      #button1{
          display: none;
      }
+     .uul1{
+         margin-left:10px;
+     }
     </style>
 </head>
 <body>
    <div class="start">
      <h1 class="hh">
-         Omegle Clone
+        Rando-Chat
      </h1>
    </div>
  <div class="container">
  <div class="chat-box">
-    <div class="chat-window">
-        <ul>
+    <div class="chat-window" id="chatt">
+        <ul class="uul1">
 
         </ul>
     </div>
@@ -94,6 +102,11 @@
     </div>
  </div>
 </div>
+
+
+
+
+
 <script src="/chat.js"></script>
 </body>
 </html>
