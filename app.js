@@ -11,28 +11,16 @@ app.use(express.static('public'))
 app.get('/',function(req,res){
     res.render("index")
 })
-
+var server = app.listen(process.env.PORT||9000,function(){
+    console.log("Listening at port 9000")
+})
 var io = socket(server)
 io.on('connection',function(socket){
-    console.log('made connection'+socket.id)
-     socket.on('chat',function(data){
-         io.sockets.emit('chat',data);
-     })
+    socket.on("user",function(data){
+        console.log("User connected"+data.name)
+    })
 
     })
 
 
-
-
-
-
-
-
-
-
-
-
-var server = app.listen(process.env.PORT||9000,function(){
-    console.log("Listening at port 9000")
-})
 
