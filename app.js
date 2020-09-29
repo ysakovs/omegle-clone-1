@@ -32,7 +32,7 @@ io.on('connection',function(socket){
 
 
 
-app.listen(process.env.PORT||9000,function(){
+var server = app.listen(process.env.PORT||9000,function(){
     console.log("Listening at port 9000")
 })
 

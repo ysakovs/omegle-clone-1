@@ -3,23 +3,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
+
         *{
             padding: 0%;
             margin: 0%;
+            overflow-x: hidden;
             box-sizing: border-box;
         }
      .start{
          background-color: black;
          height: 60px;
+         overflow-y: hidden;
+     }
+     .hh{
+         color: orange;
+         overflow-y: hidden;
+         padding-top: 10px;
+         text-align: center;
+     }
+     .container{
+         width: 100vw;
+         height: 100vh;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+     .container .chat-box{
+         width: 600px;
+         background-color: gray;
+         height: 500px;
+         display: flex;
+         flex-direction: column;
+         border-radius: 10px;
+
+     }
+     .chat-window{
+         height:450px;
+         overflow-y: scroll;
+         background-color: gray;
+     }
+     input[type="text"]{
+         padding: 10px;
+         border:1px solid black;
+         margin-left: 10px;
+
+     }
+     #button{
+         margin-left: 10px;
+         
      }
     </style>
 </head>
 <body>
    <div class="start">
-     <h1>
+     <h1 class="hh">
          Omegle Clone
      </h1>
    </div>
+ <div class="container">
+ <div class="chat-box">
+    <div class="chat-window">
+        <ul>
+
+        </ul>
+    </div>
+    <div class="message-box">
+        <input type="text" placeholder="Enter your message" autocomplete="off" id="message">
+        <button type="button" class="btn btn-success" id="button">Start</button>
+    </div>
+ </div>
+</div>
+
 </body>
 </html>
