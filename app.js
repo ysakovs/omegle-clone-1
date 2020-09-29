@@ -36,18 +36,28 @@ io.on('connection',function(socket){
         else
         {
             var index = free.indexOf(socket.id)
+            var nn = name[index]
             free.splice(index,1)
             name.splice(index,1)
             var random = Math.floor(Math.random()*free.length)
-            io.to(random).to(socket.id).emit("user-connected",{
-                first:random,
+           
+            io.to(free[random]).to(socket.id).emit("user-connected",{
+                first:free[random],
                 second:socket.id,
-                name:name[free.indexOf(random)]
+                first_name:name[random],
+                second_name:nn
             })
-            
+
             
         }
 
+    })
+
+    socket.on("disconnected",function(data){
+       console.log(data)
+       io.to(data.first).to(data.second).emit("user-dis",{
+           message:"Sorry"
+       })
     })
 
     })

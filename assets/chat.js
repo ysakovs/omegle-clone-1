@@ -18,19 +18,24 @@ document.getElementById("button").onclick=function()
 
     }
 }
-
+var obj ={}
 socket.on("user-connected",function(data){
+obj=Object.assign({},data)
    document.querySelector(".random").innerHTML="User Connected! Say Hi..."   
    document.getElementById("button").innerHTML="Send" 
-   document.querySelector(".message-box").innerHTML+="<button type='button' class='btn btn-success' id='button1'>Leave</button>"
+   document.getElementById("button1").style.display="inline-block"
 })
 
 document.getElementById("button1").onclick=function()
 {
-    
+socket.emit("disconnected",obj)
 }
 
-
+socket.on("user-dis",function(data){
+    document.getElementById("button1").style.display="none";
+    document.querySelector(".random").innerHTML="User disconnected"
+    document.getElementById("button").innerHTML="Start"
+})
 
 socket.on("no-user",function(data){
     document.querySelector(".random").innerHTML="No user is online or free"
