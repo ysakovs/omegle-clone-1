@@ -1,17 +1,19 @@
 var name = prompt("Enter your name")
-var socket = io.connect("http://localhost:9000");
+var socket = io.connect("http://localhost:8000");
 var obj ={}
 
 
 document.getElementById("button").onclick=function()
 {
     if(document.getElementById("button").innerHTML=="Start")
-    {        
+    {       
+        
            document.querySelector(".random").innerHTML="Connecting to a user...."
+           
             socket.emit("new-user",{
                 name:name
             })
-         
+    
     }
     else
     {
@@ -35,14 +37,22 @@ socket.on("message-sent",function(data){
 })
 
 
-
-
 socket.on("user-connected",function(data){
+    console.log(data)
 obj=Object.assign({},data)
    document.querySelector(".uul1").innerHTML=""
    document.querySelector(".random").innerHTML="User Connected! Say Hi..."   
    document.getElementById("button").innerHTML="Send" 
    document.getElementById("button1").style.display="inline-block"
+})
+
+document.getElementById("message").onkeyup=function()
+{
+    socket.emit("typing",obj)
+}
+
+socket.on("typed",function(data){
+    document.querySelector(".random").innerHTML="Other person is typing....."   
 })
 
 document.getElementById("message").onkeydown=function(e)

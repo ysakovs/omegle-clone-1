@@ -40,7 +40,7 @@
      }
      .container{
          width: 100vw;
-         height: 100vh;
+         height: auto;
          display: flex;
          justify-content: center;
          align-items: center;
@@ -49,6 +49,7 @@
          width: 600px;
          background-color: gray;
          height: 500px;
+         margin-top:30px;
          display: flex;
          flex-direction: column;
          border-radius: 10px;
@@ -76,8 +77,16 @@
      #button1{
          display: none;
      }
+     #button2{
+         display: none;
+     }
      .uul1{
          margin-left:10px;
+     }
+     .suu{
+         margin-left:33vw;
+         margin-top:7px;
+         width:400px;
      }
     </style>
 </head>
@@ -98,10 +107,11 @@
         <h5 class="random">Click on Start button to start chat</h5>
         <input type="text" placeholder="Enter your message" autocomplete="off" id="message">
         <button type="button" class="btn btn-success" id="button">Start</button>
-        <button type="button" class="btn btn-success" id="button1">Leave</button>
+        <button type="button" class="btn btn-danger" id="button1">Leave</button>
     </div>
  </div>
 </div>
+<button class="btn btn-success suu" onclick="window.location.reload();">Refresh Page</button>
 
 
 
