@@ -76,7 +76,15 @@ io.on('connection',function(socket){
     
 })
 
-
+socket.on("next",function(data){
+    if(free.includes(socket.id))
+    {
+        var index = free.indexOf(socket.id)
+        free.splice(index,1)
+        name.splice(index,1)
+        io.to(socket.id).emit("next-success",data)
+    }
+})
     socket.on("typing",function(data){
         if(socket.id==data.first)
         {

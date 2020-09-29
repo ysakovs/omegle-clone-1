@@ -29,6 +29,24 @@ document.getElementById("button").onclick=function()
     }
 }
 }
+
+
+document.getElementById("next").onclick=function()
+{
+    clearInterval(interval)
+    socket.emit("next",{
+        message:"Please next Chat"
+    })
+}
+
+socket.on("next-success",function(data){
+    document.querySelector(".random").innerHTML="Click on Start button to start chat"
+    document.getElementById("button").innerHTML=="Start"
+})
+
+
+
+
 window.setInterval(function() {
     var elem = document.getElementById("chatt");
     elem.scrollTop = elem.scrollHeight;
