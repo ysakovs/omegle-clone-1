@@ -16,7 +16,9 @@ var server = app.listen(process.env.PORT||9000,function(){
 })
 var io = socket(server)
 var free=[]
+free.push("hfblhbbvldbv")
 var name=[]
+name.push("Riii")
 
 io.on('connection',function(socket){
     socket.on("new-user",function(data){
@@ -33,7 +35,16 @@ io.on('connection',function(socket){
         }
         else
         {
-            var random = Math.floor(Math.random(free.length))
+            var index = free.indexOf(socket.id)
+            free.splice(index,1)
+            name.splice(index,1)
+            var random = Math.floor(Math.random()*free.length)
+            io.to(random).to(socket.id).emit("user-connected",{
+                first:random,
+                second:socket.id,
+                name:name[free.indexOf(random)]
+            })
+            
             
         }
 
