@@ -68,11 +68,21 @@ obj=Object.assign({},data)
    document.getElementById("button").innerHTML="Send" 
    document.getElementById("button1").style.display="inline-block"
 })
-
+var timer = null;
 document.getElementById("message").onkeyup=function()
 {
+    clearTimeout(timer); 
+       timer = setTimeout(doStuff, 2000)
     socket.emit("typing",obj)
 }
+function doStuff()
+{
+    socket.emit("stopped_typing",obj)
+}
+
+socket.on("stopped_typed",function(data){
+    document.querySelector(".random").innerHTML="Other person is not typing"
+})
 
 socket.on("typed",function(data){
     document.querySelector(".random").innerHTML="Other person is typing....."   

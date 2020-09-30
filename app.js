@@ -95,7 +95,16 @@ socket.on("next",function(data){
           io.to(data.first).emit("typed",data)
         }
     })
-
+  socket.on("stopped_typing",function(data){
+      if(socket.id==data.first)
+      {
+        io.to(data.second).emit("stopped_typed",data)
+      }
+      else
+      {
+        io.to(data.first).emit("stopped_typed",data)
+      }
+  })
     socket.on("send-message",function(data){
         
         if(socket.id==data.first)
