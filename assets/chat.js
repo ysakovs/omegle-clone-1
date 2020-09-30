@@ -61,7 +61,7 @@ socket.on("message-sent",function(data){
 
 socket.on("user-connected",function(data){
     clearInterval(interval)
-    console.log(data)
+    
 obj=Object.assign({},data)
    document.querySelector(".uul1").innerHTML=""
    document.querySelector(".random").innerHTML="User Connected! Say Hi..."   

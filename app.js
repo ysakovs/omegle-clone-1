@@ -45,9 +45,7 @@ io.on('connection',function(socket){
         }
         else
         {
-            console.log("Before removing")
-            console.log(free)
-            console.log(name)
+            
            
             var index = free.indexOf(socket.id)
             var nn = name[index]   
@@ -60,9 +58,7 @@ io.on('connection',function(socket){
             var first_name = name[random]
             free.splice(random,1)
             name.splice(random,1)
-            console.log("After removing")
-            console.log(free)
-            console.log(name)
+            
             
             io.to(first).to(nn1).emit("user-connected",{
                 first:first,
